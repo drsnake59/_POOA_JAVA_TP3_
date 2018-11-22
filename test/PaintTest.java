@@ -29,7 +29,8 @@ public class PaintTest extends ApplicationTest {
         interact(() -> {
                     app.getDrawingPane().addShape(new Ellipse(20, 20, 30, 30));
                 });
-        Iterator it = app.getDrawingPane().getShapes().iterator();
+        //Iterator it = app.getDrawingPane().getShapes().iterator();
+        Iterator it = app.getDrawingPane().iterator();
         assertTrue(it.next() instanceof Ellipse);
         assertFalse(it.hasNext());
     }
@@ -39,7 +40,8 @@ public class PaintTest extends ApplicationTest {
         clickOn("Triangle");
         moveBy(100,50);
         drag().dropBy(90,40);
-        Iterator it = app.getDrawingPane().getShapes().iterator();
+        //Iterator it = app.getDrawingPane().getShapes().iterator();
+        Iterator it = app.getDrawingPane().iterator();
         assertTrue(it.next() instanceof Polygon);
         assertFalse(it.hasNext());
     }
@@ -55,7 +57,8 @@ public class PaintTest extends ApplicationTest {
         //press(MouseButton.PRIMARY); moveBy(30,30); release(MouseButton.PRIMARY);
 
         // then:
-        Iterator it = app.getDrawingPane().getShapes().iterator();
+        //Iterator it = app.getDrawingPane().getShapes().iterator();
+        Iterator it = app.getDrawingPane().iterator();
         assertTrue(it.next() instanceof Ellipse);
         assertFalse(it.hasNext());
     }
@@ -70,7 +73,7 @@ public class PaintTest extends ApplicationTest {
         drag().dropBy(70,40);
 
         // then:
-        Iterator it = app.getDrawingPane().getShapes().iterator();
+        Iterator it = app.getDrawingPane().iterator();
         assertTrue(it.next() instanceof Rectangle);
         assertFalse(it.hasNext());
     }
@@ -87,7 +90,7 @@ public class PaintTest extends ApplicationTest {
         clickOn("Clear");
 
         // then:
-        assertFalse(app.getDrawingPane().getShapes().iterator().hasNext());
+        assertFalse(app.getDrawingPane().iterator().hasNext());
     }
 
 }
