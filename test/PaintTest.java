@@ -1,5 +1,6 @@
 import drawing.PaintApplication;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -30,6 +31,16 @@ public class PaintTest extends ApplicationTest {
                 });
         Iterator it = app.getDrawingPane().getShapes().iterator();
         assertTrue(it.next() instanceof Ellipse);
+        assertFalse(it.hasNext());
+    }
+
+    @Test
+    public void should_draw_triangle() {
+        clickOn("Triangle");
+        moveBy(100,50);
+        drag().dropBy(90,40);
+        Iterator it = app.getDrawingPane().getShapes().iterator();
+        assertTrue(it.next() instanceof Polygon);
         assertFalse(it.hasNext());
     }
 
